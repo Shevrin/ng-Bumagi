@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  urlApi: 'https://bumagi-frontend-test.herokuapp.com/',
+  urlApi: 'https://bumagi-frontend-test.herokuapp.com',
 };
 
 /*
