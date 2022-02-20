@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, Renderer2 } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { map, Observable } from 'rxjs';
 import { AppService } from 'src/app/services/app.service';
@@ -11,13 +11,30 @@ import { UserCardComponent } from '../user-card/user-card.component';
 })
 export class UsersListComponent implements OnInit {
   statusRequest = 0;
-  pressed!: false;
+  pressed = false;
   userList!: Observable<any>;
 
-  constructor(private appService: AppService, public userCard: MatDialog) {}
+  constructor(
+    private appService: AppService,
+    public userCard: MatDialog,
+    private element: ElementRef,
+    private renderer: Renderer2
+  ) {}
 
-  getAllStatuses() {
-    // this.userList = this.appService.getAllUsers();
+  click(event: any) {
+    console.log(event);
+    console.log(event.target.classList.contains('btn-pressed'));
+  }
+
+  getAllStatuses(event: any) {
+    this.userList = this.appService.getAllUsers();
+    const hasClass =
+      this.element.nativeElement.classList.contains('btn-pressed');
+    if (hasClass) {
+      this.renderer.removeClass(this.element.nativeElement, 'btn-pressed');
+    } else {
+      this.renderer.addClass(this.element.nativeElement, 'btn-pressed');
+    }
   }
   changeStatusRequest(status: number) {
     this.statusRequest = status;

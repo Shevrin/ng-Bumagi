@@ -20,6 +20,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppService } from './services/app.service';
 import { Interceptor } from './services/interceptor.service';
 import { UserCardComponent } from './components/user-card/user-card.component';
+import { PressedDirective } from './directives/pressed.directive';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { UserCardComponent } from './components/user-card/user-card.component';
     LoginComponent,
     UsersListComponent,
     UserCardComponent,
+    PressedDirective,
   ],
   imports: [
     BrowserModule,
