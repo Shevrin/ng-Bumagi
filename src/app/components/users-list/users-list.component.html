@@ -1,21 +1,54 @@
-<div class="container">
-  <article class="frame">
-    <!-- <div class="content"> -->
-    <div class="text-info">
-      <div class="avatar"><img src="" alt="avatar" /></div>
+<div class="button-wrapper">
+  <div class="btn btn-pressed" type="menu" (click)="getAllStatuses()">Все</div>
+  <div class="btn" (click)="changeStatusRequest(0)">Активные</div>
+  <div class="btn" (click)="changeStatusRequest(2)">Заблокированные</div>
+</div>
+
+<div class="component">
+  <!-- <pre>{{ userList | async }}</pre> -->
+
+  <div
+    class="container"
+    *ngFor="let item of userList | async"
+    (click)="openModal(item.id)"
+  >
+    <article class="frame">
+      <!-- <div class="content"> -->
       <div class="text-info">
-        <p class="text text-name">Ibankdoff</p>
-        <p class="text text-balance">Balance</p>
+        <div class="avatar">
+          <img
+            src="{{
+              'https://bumagi-frontend-test.herokuapp.com' + item.avatar
+            }}"
+            alt="{{ item.id }}"
+          />
+        </div>
+        <div class="text-info">
+          <p class="text text-name">{{ item.name + " " + item.fname }}</p>
+          <p class="text text-balance">{{ item.balance | number: "1.2-2" }}</p>
+        </div>
       </div>
-    </div>
-    <div class="text-info-log">
-      <p class="text text-content">
-        Last visited<time datetime="2015-05-17 19:00">16 мая</time>
-      </p>
-      <select>
+      <div class="text-info-log">
+        <p class="text text-content">
+          Последнее изменение
+          <time>{{ item.lastUpdatedAt | date: "ss" }}</time> секунд назад
+        </p>
+        <mat-form-field appearance="outline">
+          <mat-select disableRipple value="{{ item.status }}">
+            <!-- <mat-option *ngFor="let sub of subscribeValue" [value]="sub.value">
+            {{ sub.viewValue }}
+          </mat-option> -->
+            <mat-option value="0">Подписка активна</mat-option>
+            <mat-option value="1">Приостановлена</mat-option>
+            <mat-option value="2">Заблокирован</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <!-- <select>
         <option name="" id="">select</option>
-      </select>
-    </div>
-    <!-- </div>-->
-  </article>
+      </select> -->
+      </div>
+      <!-- </div>-->
+    </article>
+  </div>
+  <!-- <pre>{{ userList | async | json }}</pre> -->
 </div>

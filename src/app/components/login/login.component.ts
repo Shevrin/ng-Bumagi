@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Observable } from 'rxjs';
 import { AppService } from 'src/app/services/app.service';
 
 @Component({
@@ -10,11 +11,13 @@ import { AppService } from 'src/app/services/app.service';
 export class LoginComponent implements OnInit {
   hide = true;
   loginForm!: FormGroup;
-
+  userList!: Observable<any>;
+  isactive!: any;
   constructor(private fb: FormBuilder, private appService: AppService) {}
 
   ngOnInit(): void {
     this.initForm();
+    this.isactive = this.appService.isAuthentificated$;
   }
 
   initForm(): void {
