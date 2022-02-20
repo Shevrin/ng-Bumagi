@@ -13,6 +13,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
+import { MatDialogModule } from '@angular/material/dialog';
+import { OverlayModule } from '@angular/cdk/overlay';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppService } from './services/app.service';
@@ -20,7 +22,12 @@ import { Interceptor } from './services/interceptor.service';
 import { UserCardComponent } from './components/user-card/user-card.component';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, UsersListComponent, UserCardComponent],
+  declarations: [
+    AppComponent,
+    LoginComponent,
+    UsersListComponent,
+    UserCardComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -32,6 +39,8 @@ import { UserCardComponent } from './components/user-card/user-card.component';
     MatIconModule,
     MatButtonModule,
     MatSelectModule,
+    MatDialogModule,
+    OverlayModule,
     BrowserAnimationsModule,
   ],
   providers: [

@@ -1,1 +1,62 @@
 <p>user-card works!</p>
+
+<h1 mat-dialog-title>Dialog with elements</h1>
+<div mat-dialog-content>
+  This dialog showcases the title, close, content and actions elements.
+</div>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close>Close</button>
+</div>
+
+<button
+  (click)="isOpen = !isOpen"
+  type="button"
+  cdkOverlayOrigin
+  #trigger="cdkOverlayOrigin"
+>
+  {{ isOpen ? "Close" : "Open" }}
+</button>
+
+<!-- This template displays the overlay content and is connected to the button -->
+<ng-template
+  cdkConnectedOverlay
+  [cdkConnectedOverlayOrigin]="trigger"
+  [cdkConnectedOverlayOpen]="isOpen"
+>
+  <!-- <ul class="example-list">
+    <li>Item 1</li>
+    <li>Item 2</li>
+    <li>Item 3</li>
+  </ul> -->
+  <div class="card-container">
+    <header>
+      <p>User name</p>
+      <button (click)="isOpen = !isOpen">Х</button>
+    </header>
+    <form action="user-info">
+      <mat-form-field appearance="outline">
+        <input matInput placeholder="Имя" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <input matInput placeholder="Отчество" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <input matInput placeholder="Фамилия" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-select disableRipple value="">
+          <mat-option value="0">Подписка активна</mat-option>
+          <mat-option value="1">Приостановлена</mat-option>
+          <mat-option value="2">Заблокирован</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <button mat-flat-button class="btn-submit" color="primary">
+        Сохранить
+      </button>
+
+      <input type="text" name="name" id="name" />
+      <input type="text" name="name" id="name" />
+      <input type="text" name="name" id="name" />
+    </form>
+  </div>
+</ng-template>
