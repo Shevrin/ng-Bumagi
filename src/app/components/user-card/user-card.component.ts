@@ -31,7 +31,7 @@ export class UserCardComponent implements OnInit {
       name: [this.userdata.name, [Validators.minLength(1)]],
       mname: [this.userdata.mname, [Validators.minLength(1)]],
       fname: [this.userdata.fname, [Validators.minLength(1)]],
-      status: this.userdata.status,
+      status: [this.userdata.status.toString(), [Validators.required]],
     });
   }
 
@@ -42,6 +42,8 @@ export class UserCardComponent implements OnInit {
   }
 
   onSubmit(): void {
+    console.log('submit');
+
     const controls = this.userForm.controls;
     if (this.userForm.invalid) {
       Object.keys(controls).forEach((controlName) =>

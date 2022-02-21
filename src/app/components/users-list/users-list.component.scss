@@ -172,6 +172,11 @@ img:after {
 
 ::ng-deep.mat-form-field {
   display: inline-block;
+  color: #fff;
+}
+
+::ng-deep.mat-form-field-outline {
+  color: #fff !important;
 }
 
 ::ng-deep.mat-select-arrow-wrapper {

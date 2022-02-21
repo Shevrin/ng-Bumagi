@@ -105,22 +105,15 @@ export class AppService {
   editUser(id: number, userForm: UserDialog) {
     console.log('userForm SERVICE ', userForm);
 
-    const url = 'https://bumagi-frontend-test.herokuapp.com/users/' + 14;
+    const url = 'https://bumagi-frontend-test.herokuapp.com/users/' + id;
 
-    // return this.http.patch(
-    //   url,
-    //   {
-    //     name: 'PATCH_Тимур',
-    //     fname: 'румиТ',
-    //     mname: 'Геннадьевич',
-    //     status: 2,
-    //   },
-    //   {
-    //     headers: new HttpHeaders().set(
-    //       'Authorization',
-    //       'token 7c217d7b1444ee1a3d6b81ff1f0b50eb'
-    //     ),
-    //   }
-    // );
+    return this.http
+      .patch(url, userForm, {
+        // headers: new HttpHeaders().set(
+        //   'Authorization',
+        //   'token 7c217d7b1444ee1a3d6b81ff1f0b50eb'
+        // ),
+      })
+      .subscribe((data) => console.log(data));
   }
 }
