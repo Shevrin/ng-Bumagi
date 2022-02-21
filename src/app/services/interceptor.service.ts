@@ -49,6 +49,7 @@ export class Interceptor implements HttpInterceptor {
         (err) => {
           if (err instanceof HttpErrorResponse) {
             if (err.status == 401) console.log('Unauthorized');
+            if (err.status == 404) console.log('Not Found');
           }
         }
       )

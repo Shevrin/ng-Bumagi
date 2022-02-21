@@ -1,40 +1,123 @@
 .card-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 28px;
+  // gap: 28px;
+  // flex-direction: row;
   // position: absolute;
+  align-content: flex-start;
+
   width: 916px;
   height: 573px;
-  left: 262px;
-  top: 225px;
+  // left: 262px;// top: 225px;
   background: #FFFFFF;
   box-shadow: 0px 7px 64px rgba(0, 0, 0, 0.07);
-  border-radius: 12px;
+  // border-radius: 12px;
 }
 
 ::ng-deep.mat-dialog-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 28px;
-  padding: 0 24px;
+  padding: 0;
+  border-radius: 12px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
 }
 
-input[type="text"] {
+
+
+header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 24px 34px 0;
+  // border-bottom: #592c86 solid 2px;
+  width: 100%;
+  height: 80px;
+  justify-content: space-between;
+  font-size: 34px;
+}
+
+.btn-close {
+  cursor: pointer;
+  // content: "\e5cd";
+  // font-family: 'Material Icons';
+  // font-weight: 500;
+  // line-height: 30px;
+  // text-align: center;
+  // align-items: center;
+  // width: 100%;
+  margin-bottom: 30px;
+  height: auto;
+  padding: 5px;
+  // border: #592c86 solid 1px;
+  width: 30px;
+  text-align: center;
+  // vertical-align: middle;
+  // height: 48px;
+  // height: 21px;
+  border-radius: 50%;
+  // line-height: 80px;
+  // align-items: center;
+  // text-align: center;
+  font-size: 48px;
+  color: #6979F8;
+  // background: #000;
+  // display: block;
   // position: absolute;
-  // left: 0%;
-  // right: 0%;
-  // top: 0%;
-  // bottom: 0%;
+  // z-index: 2;
+  ;
 
-  /* Color/Neutral/6 - White */
+  &:hover {
+    // background: rgb(235, 239, 243);
+    box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.07);
+  }
+}
 
-  // background: #FFFFFF;
-  /* Color/Neutral/4 - Grey 25% */
+.input-wrapper {
+  display: flex;
+  // border-top: #592c86 solid 2px;
+  // position: relative;
+  margin: 0px 34px;
+  width: 100%;
+  flex-wrap: wrap;
+  gap: 28px;
+  justify-content: space-between;
+}
 
-  border: 1px solid #592c86;
+// // ::ng-deep.mat-dialog-container {
+// //   display: flex;
+// //   flex-wrap: wrap;
+// //   gap: 28px;
+// //   padding: 0 24px;
+// // }
+
+input[type="text"] {
+  // display: block;
+  // position: absolute;
+  padding: 0 10px;
+  width: 240px;
+  height: 48px;
+  border: 1px solid #ECEBED;
   box-sizing: border-box;
-  /* Dropshadow 1 */
 
   box-shadow: 0px 7px 64px rgba(0, 0, 0, 0.07);
+  border-radius: 6px;
+
+}
+
+
+mat-select {
+  width: 240px;
+  height: 48px;
+}
+
+.btn-submit {
+  display: block;
+  margin-right: 10px;
+  // position: absolute;
+  // bottom: 250px;
+  // right: 22px;
+  width: 180px;
+  height: 40px;
+  background: #6979F8;
   border-radius: 6px;
 }

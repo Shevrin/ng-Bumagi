@@ -1,5 +1,4 @@
-<div mat-dialog-content class="card-container">
-  <!-- <button
+<!-- <button
   (click)="isOpen = !isOpen"
   type="button"
   cdkOverlayOrigin
@@ -8,26 +7,57 @@
   {{ isOpen ? "Close" : "Open" }}
 </button> -->
 
-  <!-- This template displays the overlay content and is connected to the button -->
-  <!-- <ng-template
+<!-- This template displays the overlay content and is connected to the button -->
+<!-- <ng-template
   cdkConnectedOverlay
   [cdkConnectedOverlayOrigin]="trigger"
   [cdkConnectedOverlayOpen]="isOpen"
 > -->
-  <!-- <ul class="example-list">
+<!-- <ul class="example-list">
     <li>Item 1</li>
     <li>Item 2</li>
     <li>Item 3</li>
   </ul> -->
+<div mat-dialog-content class="card-container">
   <header>
+    <!-- <p>{{ nameInHeader }}</p> -->
+    <p>{{ nameInHeader }}</p>
     <div mat-dialog-actions>
-      <button mat-button mat-dialog-close>Close</button>
+      <div class="btn-close" mat-button mat-dialog-close>
+        <mat-icon>close</mat-icon>
+      </div>
     </div>
-    <p>User name</p>
     <!-- <button (click)="isOpen = !isOpen">Х</button> -->
   </header>
-  <form action="user-info">
-    <mat-form-field appearance="outline">
+  <form
+    action="user-info"
+    class="input-wrapper"
+    [formGroup]="userForm"
+    (ngSubmit)="onSubmit()"
+  >
+    <input
+      type="text"
+      name="name"
+      id="name"
+      placeholder="Имя"
+      formControlName="name"
+    />
+
+    <input
+      type="text"
+      name="mname"
+      id="mname"
+      placeholder="Отчество"
+      formControlName="mname"
+    />
+    <input
+      type="text"
+      name="fname"
+      id="fname"
+      placeholder="Фамилия"
+      formControlName="fname"
+    />
+    <!-- <mat-form-field appearance="outline">
       <input matInput placeholder="Имя" />
     </mat-form-field>
     <mat-form-field appearance="outline">
@@ -35,22 +65,16 @@
     </mat-form-field>
     <mat-form-field appearance="outline">
       <input matInput placeholder="Фамилия" />
-    </mat-form-field>
+    </mat-form-field> -->
     <mat-form-field appearance="outline">
-      <mat-select disableRipple value="">
+      <mat-select disableRipple value="status" formControlName="status">
         <mat-option value="0">Подписка активна</mat-option>
         <mat-option value="1">Приостановлена</mat-option>
         <mat-option value="2">Заблокирован</mat-option>
       </mat-select>
     </mat-form-field>
-    <button mat-flat-button class="btn-submit" color="primary">
-      Сохранить
-    </button>
-
-    <input type="text" name="name" id="name" />
-    <input type="text" name="name" id="name" />
-    <input type="text" name="name" id="name" />
   </form>
+  <button mat-flat-button class="btn-submit">Сохранить</button>
 </div>
 <!-- </ng-template> -->
 

@@ -1,11 +1,15 @@
-<div class="button-wrapper" (click)="click($event)">
+<div class="button-wrapper" (click)="getStatus($event)">
   <!-- <div class="tabs"> -->
   <input type="radio" name="tab-btn" id="tab-btn-1" value="" checked />
-  <label class="btn" for="tab-btn-1">Все</label>
+  <label class="btn" for="tab-btn-1" (click)="getAllStatuses()">Все</label>
   <input type="radio" name="tab-btn" id="tab-btn-2" value="" />
-  <label class="btn" for="tab-btn-2">Активные</label>
+  <label class="btn" for="tab-btn-2" (click)="changeStatusRequest(0)"
+    >Активные</label
+  >
   <input type="radio" name="tab-btn" id="tab-btn-3" value="" />
-  <label class="btn" for="tab-btn-3">Заблокированные</label>
+  <label class="btn" for="tab-btn-3" (click)="changeStatusRequest(2)"
+    >Заблокированные</label
+  >
 </div>
 
 <!-- <div>

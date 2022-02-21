@@ -21,38 +21,52 @@ export class UsersListComponent implements OnInit {
     private renderer: Renderer2
   ) {}
 
-  click(event: any) {
+  getStatus(event: any) {
     console.log(event);
     console.log(event.target.classList.contains('btn-pressed'));
   }
 
-  getAllStatuses(event: any) {
+  getAllStatuses() {
     this.userList = this.appService.getAllUsers();
-    const hasClass =
-      this.element.nativeElement.classList.contains('btn-pressed');
-    if (hasClass) {
-      this.renderer.removeClass(this.element.nativeElement, 'btn-pressed');
-    } else {
-      this.renderer.addClass(this.element.nativeElement, 'btn-pressed');
-    }
+    this.userList.subscribe((data) => console.log(data));
+    // this.appService.editUser().subscribe((data) => console.log('patch ', data));
   }
+
   changeStatusRequest(status: number) {
     this.statusRequest = status;
     this.userList = this.appService.getUsers(status);
-    // .pipe(map((data) => data));
   }
 
   openModal(id: number) {
     console.log('open  modal id: ', id);
-    const openUserConfig = new MatDialogConfig();
-    // openUserConfig.width = '1000px';
-    openUserConfig.data = {
-      userid: id,
-    };
-    this.userCard.open(UserCardComponent, openUserConfig);
+    this.userList.subscribe((data) => {
+      console.log(data);
+
+      let userdata = data.find((item: any) => item.id == id);
+      console.log(userdata);
+
+      const openUserConfig = new MatDialogConfig();
+      openUserConfig.data = {
+        // userdata,
+        // user: {
+        //   id: id,
+        //   fname: 'Петров',
+        //   mname: 'Геннадьевич',
+        //   name: 'Тимур',
+        //   status: 2,
+        // },
+
+        id: userdata.id,
+        name: userdata.name,
+        fname: userdata.fname,
+        mname: userdata.mname,
+        status: userdata.status,
+      };
+      this.userCard.open(UserCardComponent, openUserConfig);
+    });
   }
 
   ngOnInit() {
-    this.userList = this.appService.getAllUsers();
+    this.getAllStatuses();
   }
 }

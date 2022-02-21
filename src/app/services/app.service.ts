@@ -11,6 +11,7 @@ import { environment } from 'src/environments/environment';
 import { AuthResponse } from '../models/auth-response';
 import { LoginRequest } from '../models/login-request';
 import { LoginResponse } from '../models/login-response';
+import { UserDialog } from '../models/user-dialog';
 
 @Injectable({
   providedIn: 'root',
@@ -99,5 +100,27 @@ export class AppService {
         'token 7c217d7b1444ee1a3d6b81ff1f0b50eb'
       ),
     });
+  }
+
+  editUser(id: number, userForm: UserDialog) {
+    console.log('userForm SERVICE ', userForm);
+
+    const url = 'https://bumagi-frontend-test.herokuapp.com/users/' + 14;
+
+    // return this.http.patch(
+    //   url,
+    //   {
+    //     name: 'PATCH_Тимур',
+    //     fname: 'румиТ',
+    //     mname: 'Геннадьевич',
+    //     status: 2,
+    //   },
+    //   {
+    //     headers: new HttpHeaders().set(
+    //       'Authorization',
+    //       'token 7c217d7b1444ee1a3d6b81ff1f0b50eb'
+    //     ),
+    //   }
+    // );
   }
 }
