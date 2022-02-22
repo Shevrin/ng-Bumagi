@@ -1,8 +1,8 @@
 <div class="alert-container">
-  <div class="alert-squre">
+  <div class="alert-squre" (click)="alertRef.dismiss()">
     <div class="alert-ring">
       <mat-icon>highlight_off</mat-icon>
     </div>
   </div>
-  <span class="alert-text"> Authorization required </span>
+  <span class="alert-text"> {{ data.message }} </span>
 </div>

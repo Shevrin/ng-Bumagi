@@ -16,28 +16,17 @@ import { UserCardComponent } from '../user-card/user-card.component';
   styleUrls: ['./users-list.component.scss'],
 })
 export class UsersListComponent implements OnInit {
-  durationInSeconds = 5;
   statusRequest = 0;
   pressed = false;
   userList!: Observable<any>;
 
-  horizontalPosition: MatSnackBarHorizontalPosition = 'end';
-  verticalPosition: MatSnackBarVerticalPosition = 'top';
   constructor(
     private appService: AppService,
     public userCard: MatDialog,
-    private _alertBar: MatSnackBar,
+
     private element: ElementRef,
     private renderer: Renderer2
   ) {}
-
-  openAlertBar() {
-    this._alertBar.openFromComponent(ModalAlertComponent, {
-      // duration: this.durationInSeconds * 1000,
-      horizontalPosition: 'end',
-      verticalPosition: 'top',
-    });
-  }
 
   getStatus(event: any) {
     // console.log(event);
@@ -86,6 +75,5 @@ export class UsersListComponent implements OnInit {
 
   ngOnInit() {
     this.getAllStatuses();
-    this.openAlertBar();
   }
 }

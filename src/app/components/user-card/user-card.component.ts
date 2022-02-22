@@ -18,9 +18,7 @@ export class UserCardComponent implements OnInit {
     private appService: AppService,
     private fb: FormBuilder,
     @Inject(MAT_DIALOG_DATA) public userdata: UserDialog
-  ) {
-    console.log(userdata);
-  }
+  ) {}
 
   ngOnInit(): void {
     this.initForm();

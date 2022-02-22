@@ -10,12 +10,16 @@ import {
 import { Injectable } from '@angular/core';
 import { Observable, tap } from 'rxjs';
 import { AppService } from './app.service';
+import { NotificationService } from './notification.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class Interceptor implements HttpInterceptor {
-  constructor(private appService: AppService) {}
+  constructor(
+    private appService: AppService,
+    private notification: NotificationService
+  ) {}
   // intercept(
   //   req: HttpRequest<any>,
   //   next: HttpHandler
@@ -44,9 +48,14 @@ export class Interceptor implements HttpInterceptor {
     return next.handle(authReq).pipe(
       tap(
         (event) => {
-          if (event instanceof HttpResponse)
-            console.log('Server response', event);
+          if (event instanceof HttpResponse) {
+            console.log('Server response', event.body.message);
+            if (event.body.message) {
+              this.notification.openAlertBar(event.body.message);
+            }
+          }
         },
+
         (err) => {
           if (err instanceof HttpErrorResponse) {
             if (err.status == 401) console.log('Unauthorized');
