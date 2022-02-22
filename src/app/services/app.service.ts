@@ -81,12 +81,14 @@ export class AppService {
     const url =
       'https://bumagi-frontend-test.herokuapp.com/users' + `?status=${status}`;
 
-    return this.http.get(url, {
-      headers: new HttpHeaders().set(
-        'Authorization',
-        'token 7c217d7b1444ee1a3d6b81ff1f0b50eb'
-      ),
-    });
+    return this.http
+      .get(url, {
+        headers: new HttpHeaders().set(
+          'Authorization',
+          'token 7c217d7b1444ee1a3d6b81ff1f0b50eb'
+        ),
+      })
+      .pipe(map((data) => console.log(data)));
     // .subscribe((data) => {
     //   console.log('getUsers', data);
     // });

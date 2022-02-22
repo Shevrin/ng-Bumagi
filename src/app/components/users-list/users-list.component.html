@@ -24,11 +24,7 @@
 <div class="component">
   <!-- <pre>{{ userList | async }}</pre> -->
 
-  <div
-    class="container"
-    *ngFor="let item of userList | async"
-    (click)="openModal(item.id)"
-  >
+  <div class="container" *ngFor="let item of userList | async">
     <article class="frame">
       <!-- <div class="content"> -->
       <div class="text-info">
@@ -41,7 +37,9 @@
           />
         </div>
         <div class="text-info">
-          <p class="text text-name">{{ item.name + " " + item.fname }}</p>
+          <p class="text text-name" (click)="openModal(item.id)">
+            {{ item.name + " " + item.fname }}
+          </p>
           <p class="text text-balance">{{ item.balance | number: "1.2-2" }}</p>
         </div>
       </div>

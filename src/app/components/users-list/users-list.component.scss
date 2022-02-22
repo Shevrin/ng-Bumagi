@@ -77,7 +77,7 @@
 
 .container {
   margin: 10px 48px;
-  cursor: pointer;
+
 }
 
 .frame {
@@ -93,6 +93,10 @@
   box-shadow: 0px 10px 10px 5px #C4C4C4;
   // justify-items: center;
   // position: relative;
+}
+
+.text-name {
+  cursor: pointer;
 }
 
 .text-info {

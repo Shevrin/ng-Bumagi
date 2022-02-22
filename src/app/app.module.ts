@@ -14,6 +14,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -21,6 +22,7 @@ import { AppService } from './services/app.service';
 import { Interceptor } from './services/interceptor.service';
 import { UserCardComponent } from './components/user-card/user-card.component';
 import { PressedDirective } from './directives/pressed.directive';
+import { ModalAlertComponent } from './components/modal-alert/modal-alert.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,7 @@ import { PressedDirective } from './directives/pressed.directive';
     UsersListComponent,
     UserCardComponent,
     PressedDirective,
+    ModalAlertComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,6 +45,7 @@ import { PressedDirective } from './directives/pressed.directive';
     MatButtonModule,
     MatSelectModule,
     MatDialogModule,
+    MatSnackBarModule,
     OverlayModule,
     BrowserAnimationsModule,
   ],
