@@ -42,7 +42,6 @@ export class LoginComponent implements OnInit {
       return;
     } else {
       this.appService.login(this.loginForm.value);
-      // this.loginForm.reset();
     }
   }
 }

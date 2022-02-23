@@ -1,13 +1,13 @@
-<div class="button-wrapper" (click)="getStatus($event)">
+<div class="button-wrapper" >
   <!-- <div class="tabs"> -->
   <input type="radio" name="tab-btn" id="tab-btn-1" value="" checked />
-  <label class="btn" for="tab-btn-1" (click)="getAllStatuses()">Все</label>
+  <label class="btn" for="tab-btn-1" (click)="getUsersList()">Все</label>
   <input type="radio" name="tab-btn" id="tab-btn-2" value="" />
-  <label class="btn" for="tab-btn-2" (click)="changeStatusRequest(0)"
+  <label class="btn" for="tab-btn-2" (click)="getUsersList(0)"
     >Активные</label
   >
   <input type="radio" name="tab-btn" id="tab-btn-3" value="" />
-  <label class="btn" for="tab-btn-3" (click)="changeStatusRequest(2)"
+  <label class="btn" for="tab-btn-3" (click)="getUsersList(2)"
     >Заблокированные</label
   >
 </div>
@@ -24,7 +24,7 @@
 <div class="component">
   <!-- <pre>{{ userList | async }}</pre> -->
 
-  <div class="container" *ngFor="let item of userList | async">
+  <div class="container" *ngFor="let item of userList">
     <article class="frame">
       <!-- <div class="content"> -->
       <div class="text-info">

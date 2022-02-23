@@ -58,11 +58,9 @@ export class AppService {
   // }
 
   login(login: LoginRequest) {
-    // console.log(login);
-    const url = environment.urlApi + '/auth';
     this.http
       .post<LoginRequest>(
-        url,
+        environment.API_URL_LOGIN,
         {
           login: 'test@example.com',
           password: '1q2w3e',
@@ -79,11 +77,11 @@ export class AppService {
         })
       )
       .subscribe((data) => {
-        console.log(data);
-        console.log('body', data.body);
-        console.log(data.headers.keys());
-        console.log(data.headers.getAll('Authorization'));
-        console.log(data.headers.get('Authorization'));
+        // console.log(data);
+        // console.log('body', data.body);
+        // console.log(data.headers.keys());
+        // console.log(data.headers.getAll('Authorization'));
+        // console.log(data.headers.get('Authorization'));
 
         this.setAuthentificated(true);
         this.router.navigate(['/userslist']);
@@ -96,9 +94,7 @@ export class AppService {
   }
 
   getUsers(status: number) {
-    const url =
-      'https://bumagi-frontend-test.herokuapp.com/users' + `?status=${status}`;
-
+    const url = environment.API_URL_ALL_USERS_STATUS + status;
     return this.http.get(
       url
       // {
@@ -112,11 +108,10 @@ export class AppService {
     //   console.log('getUsers', data);
     // });
   }
-  getAllUsers() {
-    const url = 'https://bumagi-frontend-test.herokuapp.com/users';
 
+  getAllUsers() {
     return this.http.get(
-      url
+      environment.API_URL_ALL_USERS
       // {
       //   headers: new HttpHeaders().set(
       //     'Authorization',
@@ -130,7 +125,7 @@ export class AppService {
   editUser(id: number, userForm: UserDialog) {
     console.log('userForm SERVICE ', userForm);
 
-    const url = 'https://bumagi-frontend-test.herokuapp.com/users/' + id;
+    const url = environment.API_URL_ALL_USERS + id;
 
     return this.http
       .patch(url, userForm, {

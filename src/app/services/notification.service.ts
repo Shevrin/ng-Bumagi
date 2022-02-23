@@ -10,17 +10,17 @@ import { ModalAlertComponent } from '../components/modal-alert/modal-alert.compo
   providedIn: 'root',
 })
 export class NotificationService {
-  durationInSeconds = 5;
+  durationInSeconds = 3;
   horizontalPosition: MatSnackBarHorizontalPosition = 'end';
   verticalPosition: MatSnackBarVerticalPosition = 'top';
   constructor(private _alertBar: MatSnackBar) {}
 
-  openAlertBar(message:string) {
+  openAlertBar(message: string) {
     this._alertBar.openFromComponent(ModalAlertComponent, {
-      data:{
+      data: {
         message: message,
       },
-      // duration: this.durationInSeconds * 1000,
+      duration: this.durationInSeconds * 1000,
       horizontalPosition: 'end',
       verticalPosition: 'top',
     });

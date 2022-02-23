@@ -1,33 +1,11 @@
-<!-- <button
-  (click)="isOpen = !isOpen"
-  type="button"
-  cdkOverlayOrigin
-  #trigger="cdkOverlayOrigin"
->
-  {{ isOpen ? "Close" : "Open" }}
-</button> -->
-
-<!-- This template displays the overlay content and is connected to the button -->
-<!-- <ng-template
-  cdkConnectedOverlay
-  [cdkConnectedOverlayOrigin]="trigger"
-  [cdkConnectedOverlayOpen]="isOpen"
-> -->
-<!-- <ul class="example-list">
-    <li>Item 1</li>
-    <li>Item 2</li>
-    <li>Item 3</li>
-  </ul> -->
 <div mat-dialog-content class="card-container">
   <header>
-    <!-- <p>{{ nameInHeader }}</p> -->
     <p>{{ nameInHeader }}</p>
     <div mat-dialog-actions>
       <div class="btn-close" mat-button mat-dialog-close>
         <mat-icon>close</mat-icon>
       </div>
     </div>
-    <!-- <button (click)="isOpen = !isOpen">Х</button> -->
   </header>
   <form action="user-info" class="input-wrapper" [formGroup]="userForm">
     <input
@@ -37,7 +15,7 @@
       placeholder="Имя"
       formControlName="name"
     />
-
+    <small class="error" *ngIf="isControlInvalid('name')"> Введите имя </small>
     <input
       type="text"
       name="mname"
@@ -45,6 +23,9 @@
       placeholder="Отчество"
       formControlName="mname"
     />
+    <!-- <small class="error" *ngIf="isControlInvalid('mname')">
+      Введите отчество
+    </small> -->
     <input
       type="text"
       name="fname"
@@ -52,31 +33,27 @@
       placeholder="Фамилия"
       formControlName="fname"
     />
-    <!-- <mat-form-field appearance="outline">
-      <input matInput placeholder="Имя" />
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-      <input matInput placeholder="Отчество" />
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-      <input matInput placeholder="Фамилия" />
-    </mat-form-field> -->
-    <mat-form-field appearance="outline" class="select">
-      <mat-select disableRipple formControlName="status" matNativeControl>
-        <mat-option value="0">Подписка активна</mat-option>
-        <mat-option value="1">Приостановлена</mat-option>
-        <mat-option value="2">Заблокирован</mat-option>
-      </mat-select>
-    </mat-form-field>
+    <!-- <small class="error" *ngIf="isControlInvalid('fname')">
+      Введите фамилию
+    </small> -->
+    <div class="select">
+      <mat-form-field appearance="outline">
+        <mat-select disableRipple formControlName="status" matNativeControl>
+          <mat-option value="0">Подписка активна</mat-option>
+          <mat-option value="1">Приостановлена</mat-option>
+          <mat-option value="2">Заблокирован</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
   </form>
   <div class="btn-container">
-    <button mat-flat-button class="btn-submit" (click)="onSubmit()">
+    <button
+      mat-flat-button
+      class="btn-submit"
+      [disabled]="userForm"
+      (click)="onSubmit()"
+    >
       Сохранить
     </button>
   </div>
 </div>
-<!-- </ng-template> -->
-
-<!-- <div mat-dialog-actions>
-  <button mat-button mat-dialog-close>Close</button>
-</div> -->
