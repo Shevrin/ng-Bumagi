@@ -9,7 +9,7 @@ import { AppService } from 'src/app/services/app.service';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-  hide = true;
+  hide = false;
   loginForm!: FormGroup;
   userList!: Observable<any>;
   isactive!: any;
@@ -26,6 +26,12 @@ export class LoginComponent implements OnInit {
       password: ['', [Validators.required]],
     });
   }
+
+  // isControlInvalid(controlName: string): boolean {
+  //   const control = this.loginForm.controls[controlName];
+  //   const result = true;
+  //   return result;
+  // }
 
   isControlInvalid(controlName: string): boolean {
     const control = this.loginForm.controls[controlName];

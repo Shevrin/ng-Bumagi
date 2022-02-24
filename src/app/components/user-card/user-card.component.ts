@@ -40,8 +40,6 @@ export class UserCardComponent implements OnInit {
   }
 
   onSubmit(): void {
-    console.log('submit');
-    console.log(this.userForm);
     const controls = this.userForm.controls;
     if (this.userForm.invalid) {
       Object.keys(controls).forEach((controlName) =>

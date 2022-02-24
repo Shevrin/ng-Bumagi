@@ -11,10 +11,8 @@ export class LoaderService {
 
   showLoader(): void {
     this.isLoading$.next(true);
-    console.log('============service OPEN=====LOADER============');
   }
   hideLoader(): void {
     this.isLoading$.next(false);
-    console.log('============service CLOSE=====LOADER============');
   }
 }

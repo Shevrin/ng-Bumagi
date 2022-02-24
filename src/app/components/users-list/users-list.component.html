@@ -1,5 +1,4 @@
 <div class="button-wrapper">
-  <!-- <div class="tabs"> -->
   <input type="radio" name="tab-btn" id="tab-btn-1" value="" checked />
   <label class="btn" for="tab-btn-1" (click)="getUsersList()">Все</label>
   <input type="radio" name="tab-btn" id="tab-btn-2" value="" />
@@ -12,7 +11,6 @@
 <div class="component" *ngIf="!(loaderService.isLoading$ | async); else loader">
   <div class="container" *ngFor="let item of userList">
     <article class="frame">
-      <!-- <div class="content"> -->
       <div class="text-info">
         <div class="avatar">
           <img
@@ -36,19 +34,12 @@
         </p>
         <mat-form-field appearance="outline">
           <mat-select disableRipple value="{{ item.status }}">
-            <!-- <mat-option *ngFor="let sub of subscribeValue" [value]="sub.value">
-            {{ sub.viewValue }}
-          </mat-option> -->
             <mat-option value="0">Подписка активна</mat-option>
             <mat-option value="1">Приостановлена</mat-option>
             <mat-option value="2">Заблокирован</mat-option>
           </mat-select>
         </mat-form-field>
-        <!-- <select>
-        <option name="" id="">select</option>
-      </select> -->
       </div>
-      <!-- </div>-->
     </article>
   </div>
 </div>

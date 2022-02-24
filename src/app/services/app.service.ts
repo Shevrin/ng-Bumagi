@@ -48,7 +48,6 @@ export class AppService {
       )
       .pipe(
         catchError((err) => {
-          console.log(err.error.message);
           this.notification.openAlertBar(err.error.message);
           this.errorMessage = err.message;
           console.log(err.message);

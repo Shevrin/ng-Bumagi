@@ -23,7 +23,6 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { UserCardComponent } from './components/user-card/user-card.component';
 import { PressedDirective } from './directives/pressed.directive';
 import { ModalAlertComponent } from './components/modal-alert/modal-alert.component';
-import { LoaderInterceptor } from './interceptors/loader.interceptor';
 import { LoaderComponent } from './components/loader/loader.component';
 
 @NgModule({
@@ -57,11 +56,6 @@ import { LoaderComponent } from './components/loader/loader.component';
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
-      multi: true,
-    },
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: LoaderInterceptor,
       multi: true,
     },
   ],

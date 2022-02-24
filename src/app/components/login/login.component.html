@@ -22,32 +22,25 @@
 <!-- <button mat-flat-button class="btn-submit" color="primary">ВОЙТИ</button> -->
 <!-- =========================================================================== -->
 <form class="form-container" (ngSubmit)="onSubmit()" [formGroup]="loginForm">
-  <!-- <div class="form-wrapper"> -->
-  <small class="error" *ngIf="isControlInvalid('email')">
-    Введите корректный Login
-  </small>
   <input type="name" name="name" formControlName="login" />
-  <small class="error" *ngIf="isControlInvalid('password')">
-    Введите корректный пароль
-  </small>
-  <!-- <div class="pass-field"> -->
   <input
-    type="password"
-    name="Password"
-    formControlName="password"
     [type]="hide ? 'password' : 'text'"
+    class="password"
+    formControlName="password"
   />
+  <mat-icon
+    aria-hidden="false"
+    aria-label="Example home icon"
+    (click)="hide = !hide"
+    >{{ hide ? "visibility_off" : "visibility" }}</mat-icon
+  >
   <button
     class="mat-icon-button"
     (click)="hide = !hide"
     [attr.aria-label]="'Hide password'"
     [attr.aria-pressed]="hide"
-  >
-    <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
-  </button>
-  <!-- </div> -->
+  ></button>
   <button class="btn-submit submit" [disabled]="loginForm.invalid">
     ВОЙТИ
   </button>
-  <!-- </div> -->
 </form>

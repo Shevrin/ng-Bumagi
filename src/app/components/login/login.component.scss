@@ -19,58 +19,18 @@ mat-form-field {
 
 }
 
-// .btn-submit {
-//   display: block;
-//   position: relative;
-//   background-color: #6979F8;
-//   height: 48px;
-//   width: 100%;
-// }
-
-// ::ng-deep.mat-form-field-wrapper {
-//   margin-bottom: 24px !important;
-//   padding: 0;
-//   box-shadow: 0px 7px 64px rgba(0, 0, 0, 0.07);
-// }
-
-// ::ng-deep.mat-form-field-outline {
-//   color: #ECEBED;
-// }
-
 mat-icon {
+  cursor: pointer;
+  margin-top: 5px;
+  margin-left: -50px;
   color: #6979F8;
-}
-
-
-// ====================================================================
-// .form-container {
-//   display: block;
-//   width: 450px;
-//   height: 275px;
-//   margin: 0 auto;
-//   background-color: #FFFFFF;
-//   border: 2px solid #6979F8 !important;
-//   border-radius: 10px;
-// }
-
-// .form-wrapper {
-//   display: block;
-//   margin: 40px 75px 95px;
-//   align-items: center;
-// }
-
-mat-icon {
-  display: inline-block;
   font-size: 18px;
-  padding: 0;
-  margin: 0;
+  z-index: 10;
 }
 
 input {
   display: block;
-  // margin: 1em 0;
-  // padding-left: 6.5em;
-  // margin: 24px auto;
+  padding: 0 12px;
   height: 48px;
   width: 240px;
   border: 1px solid #ECEBED;
@@ -88,21 +48,15 @@ input {
   }
 }
 
-// input[type="password"] {
-//   max-width: 158px;
-//   padding-right: 44px;
-// }
+input[type="password"] {
+  max-width: 215px;
+}
 
-// label {
-//   color: #6979F8;
-//   margin-top: .75em;
-//   margin-left: 1.25em;
-//   position: absolute;
-// }
+.password {
+  max-width: 215px;
+}
 
 .btn-submit {
-  // display: block;
-  // position: relative;
   background: #6979F8;
   color: #FFFFFF;
   border: #6979F8;
@@ -110,7 +64,6 @@ input {
   height: 48px;
   width: 240px;
   box-shadow: 0px 7px 64px rgba(0, 0, 0, 0.07);
-  // margin: 24px auto;
   opacity: 1;
   transition-duration: .1s;
   transition-property: opacity;
@@ -137,7 +90,7 @@ input {
   left: 254px;
   bottom: 46px;
   border: none;
-  color: #f8ae69;
+  color: #0a0807;
 }
 
 .ng-valid {
@@ -147,18 +100,6 @@ input {
 .ng-dirty {
   border-color: #6979F8;
 }
-
-// input.ng-touched.ng-touched {
-//   border-color: #6979F8;
-// }
-
-// input.ng-touched.ng-invalid {
-//   border-color: #6979F8;
-// }
-
-// input.ng-touched.ng-valid {
-//   border-color: #6979F8;
-// }
 
 .error {
   font-size: 9px;

@@ -3,7 +3,7 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { AppService } from 'src/app/services/app.service';
 import { LoaderService } from 'src/app/services/loader.service';
 import { UserCardComponent } from '../user-card/user-card.component';
-import { UserResponse } from './user-response';
+import { UserResponse } from 'src/app/models/user-response';
 
 @Component({
   selector: 'app-users-list',
@@ -22,6 +22,7 @@ export class UsersListComponent implements OnInit {
   ) {}
 
   getUsersList(status?: number): void {
+    this.loaderService.showLoader()
     if (status) {
       clearInterval(this.interval);
       this.interval = setInterval(() => this.getUsersByStatus(status), 5000);
@@ -35,6 +36,7 @@ export class UsersListComponent implements OnInit {
     this.appService.getAllUsers().subscribe((data) => {
       if (Array.isArray(data)) {
         this.userList = data;
+        this.loaderService.hideLoader()
       } else {
         setTimeout(() => this.getAllUsers(), 5000);
       }
@@ -45,6 +47,7 @@ export class UsersListComponent implements OnInit {
     this.appService.getUsers(status).subscribe((data) => {
       if (Array.isArray(data)) {
         this.userList = data;
+        this.loaderService.hideLoader()
       } else {
         setTimeout(() => this.getUsersByStatus(status), 5000);
       }
@@ -53,7 +56,6 @@ export class UsersListComponent implements OnInit {
 
   openModal(id: number): void {
     clearInterval(this.interval);
-    console.log('open user id: ', id);
     let userdata = this.userList.find((item: any) => item.id == id);
     const openUserConfig = new MatDialogConfig();
     openUserConfig.data = {
