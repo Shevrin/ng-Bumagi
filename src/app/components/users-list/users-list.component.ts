@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { AppService } from 'src/app/services/app.service';
+import { LoaderService } from 'src/app/services/loader.service';
 import { UserCardComponent } from '../user-card/user-card.component';
 import { UserResponse } from './user-response';
 
@@ -14,7 +15,11 @@ export class UsersListComponent implements OnInit {
   // userList!: Observable<UserResponse[]>;
   userList!: UserResponse[];
   interval!: any;
-  constructor(private appService: AppService, public userCard: MatDialog) {}
+  constructor(
+    private appService: AppService,
+    public userCard: MatDialog,
+    public loaderService: LoaderService
+  ) {}
 
   getUsersList(status?: number): void {
     if (status) {

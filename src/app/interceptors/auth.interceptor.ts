@@ -9,13 +9,13 @@ import {
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, tap } from 'rxjs';
-import { AppService } from './app.service';
-import { NotificationService } from './notification.service';
+import { AppService } from '../services/app.service';
+import { NotificationService } from '../services/notification.service';
 
 @Injectable({
   providedIn: 'root',
 })
-export class Interceptor implements HttpInterceptor {
+export class AuthInterceptor implements HttpInterceptor {
   constructor(
     private appService: AppService,
     private notification: NotificationService

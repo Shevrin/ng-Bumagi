@@ -28,7 +28,7 @@ export class AppService {
     {} as LoginResponse
   );
 
-  private getAuthentificated(): boolean {
+  public getAuthentificated(): boolean {
     return this.isAuthentificated$.value;
   }
 

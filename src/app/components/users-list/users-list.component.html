@@ -9,7 +9,7 @@
     >Заблокированные</label
   >
 </div>
-<div class="component">
+<div class="component" *ngIf="!(loaderService.isLoading$ | async); else loader">
   <div class="container" *ngFor="let item of userList">
     <article class="frame">
       <!-- <div class="content"> -->
@@ -52,5 +52,6 @@
     </article>
   </div>
 </div>
-
-<ng-template #loader>Load...</ng-template>
+<ng-template #loader>
+  <app-loader></app-loader>
+</ng-template>
