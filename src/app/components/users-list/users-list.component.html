@@ -1,29 +1,15 @@
-<div class="button-wrapper" >
+<div class="button-wrapper">
   <!-- <div class="tabs"> -->
   <input type="radio" name="tab-btn" id="tab-btn-1" value="" checked />
   <label class="btn" for="tab-btn-1" (click)="getUsersList()">Все</label>
   <input type="radio" name="tab-btn" id="tab-btn-2" value="" />
-  <label class="btn" for="tab-btn-2" (click)="getUsersList(0)"
-    >Активные</label
-  >
+  <label class="btn" for="tab-btn-2" (click)="getUsersList(0)">Активные</label>
   <input type="radio" name="tab-btn" id="tab-btn-3" value="" />
   <label class="btn" for="tab-btn-3" (click)="getUsersList(2)"
     >Заблокированные</label
   >
 </div>
-
-<!-- <div>
-  <div class="btn" id="all" (click)="getAllStatuses($event)">Все</div>
-</div>
-<div class="btn" id="status=0" (click)="changeStatusRequest(0)">Активные</div>
-<div class="btn" id="status=2" (click)="changeStatusRequest(2)">
-  Заблокированные
-</div> -->
-<!-- </div> -->
-
 <div class="component">
-  <!-- <pre>{{ userList | async }}</pre> -->
-
   <div class="container" *ngFor="let item of userList">
     <article class="frame">
       <!-- <div class="content"> -->
@@ -65,7 +51,6 @@
       <!-- </div>-->
     </article>
   </div>
-  <!-- <pre>{{ userList | async | json }}</pre> -->
 </div>
 
 <ng-template #loader>Load...</ng-template>

@@ -1,6 +1,5 @@
-import { Component, ElementRef, OnInit, Renderer2 } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { map, Observable } from 'rxjs';
 import { AppService } from 'src/app/services/app.service';
 import { UserCardComponent } from '../user-card/user-card.component';
 import { UserResponse } from './user-response';
@@ -12,47 +11,42 @@ import { UserResponse } from './user-response';
 })
 export class UsersListComponent implements OnInit {
   pressed = false;
-  // userList!: Observable<any>;
+  // userList!: Observable<UserResponse[]>;
   userList!: UserResponse[];
   interval!: any;
-  // Observable<UserResponse[]>
   constructor(private appService: AppService, public userCard: MatDialog) {}
 
   getUsersList(status?: number): void {
     if (status) {
       clearInterval(this.interval);
       this.interval = setInterval(() => this.getUsersByStatus(status), 5000);
-      // this.getUsersByStatus(status);
     } else {
       clearInterval(this.interval);
       this.interval = setInterval(() => this.getAllUsers(), 5000);
     }
   }
 
-  getAllUsers() {
-    // this.userList = this.appService.getAllUsers();
+  getAllUsers(): void {
     this.appService.getAllUsers().subscribe((data) => {
       if (Array.isArray(data)) {
         this.userList = data;
       } else {
-        this.getAllUsers();
+        setTimeout(() => this.getAllUsers(), 5000);
       }
     });
-    // this.appService.editUser().subscribe((data) => console.log('patch ', data));
   }
 
-  getUsersByStatus(status: number) {
-    // this.userList = this.appService.getUsers(status);
+  getUsersByStatus(status: number): void {
     this.appService.getUsers(status).subscribe((data) => {
       if (Array.isArray(data)) {
         this.userList = data;
       } else {
-        this.getUsersByStatus(status);
+        setTimeout(() => this.getUsersByStatus(status), 5000);
       }
     });
   }
 
-  openModal(id: number) {
+  openModal(id: number): void {
     clearInterval(this.interval);
     console.log('open user id: ', id);
     let userdata = this.userList.find((item: any) => item.id == id);
@@ -67,8 +61,7 @@ export class UsersListComponent implements OnInit {
     this.userCard.open(UserCardComponent, openUserConfig);
   }
 
-  ngOnInit() {
-    // this.getAllUsers();
+  ngOnInit(): void {
     this.getUsersList();
   }
 }
