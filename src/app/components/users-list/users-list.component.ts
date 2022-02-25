@@ -22,7 +22,7 @@ export class UsersListComponent implements OnInit {
   ) {}
 
   getUsersList(status?: number): void {
-    this.loaderService.showLoader()
+    this.loaderService.showLoader();
     if (status) {
       clearInterval(this.interval);
       this.interval = setInterval(() => this.getUsersByStatus(status), 5000);
@@ -36,7 +36,7 @@ export class UsersListComponent implements OnInit {
     this.appService.getAllUsers().subscribe((data) => {
       if (Array.isArray(data)) {
         this.userList = data;
-        this.loaderService.hideLoader()
+        this.loaderService.hideLoader();
       } else {
         setTimeout(() => this.getAllUsers(), 5000);
       }
@@ -47,7 +47,7 @@ export class UsersListComponent implements OnInit {
     this.appService.getUsers(status).subscribe((data) => {
       if (Array.isArray(data)) {
         this.userList = data;
-        this.loaderService.hideLoader()
+        this.loaderService.hideLoader();
       } else {
         setTimeout(() => this.getUsersByStatus(status), 5000);
       }
@@ -65,7 +65,12 @@ export class UsersListComponent implements OnInit {
       mname: userdata!.mname,
       status: userdata!.status,
     };
-    this.userCard.open(UserCardComponent, openUserConfig);
+    const dialogRef = this.userCard.open(UserCardComponent, openUserConfig);
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        this.getUsersList();
+      }
+    });
   }
 
   ngOnInit(): void {

@@ -1,7 +1,7 @@
 import { Inject } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { UserDialog } from 'src/app/models/user-dialog';
 import { AppService } from 'src/app/services/app.service';
 
@@ -48,7 +48,6 @@ export class UserCardComponent implements OnInit {
       return;
     } else {
       this.appService.editUser(this.userdata.id, this.userForm.value);
-      // this.loginForm.reset();
     }
   }
 }

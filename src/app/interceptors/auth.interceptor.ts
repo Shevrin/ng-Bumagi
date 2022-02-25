@@ -16,35 +16,22 @@ import { NotificationService } from '../services/notification.service';
   providedIn: 'root',
 })
 export class AuthInterceptor implements HttpInterceptor {
+  token: string = '';
+
   constructor(
     private appService: AppService,
     private notification: NotificationService
-  ) {}
-  // intercept(
-  //   req: HttpRequest<any>,
-  //   next: HttpHandler
-  // ): Observable<HttpEvent<any>> {
-  //   req = req.clone({
-  //     setHeaders: { Authtorisation: 'token 7c217d7b1444ee1a3d6b81ff1f0b50eb' },
-  //   });
-  //   return next.handle(req);
-  // }
+  ) {
+    this.appService.isLogin$.subscribe((data) => (this.token = data));
+  }
 
   intercept(
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
     const authReq = req.clone({
-      headers: new HttpHeaders().set(
-        'Authorization',
-        'token 7c217d7b1444ee1a3d6b81ff1f0b50eb'
-      ),
-      // headers: req.headers.set(
-      //   'Authorization',
-      //   'token 7c217d7b1444ee1a3d6b81ff1f0b50eb'
-      // ),
+      headers: new HttpHeaders().set('Authorization', this.token),
     });
-
     return next.handle(authReq).pipe(
       tap(
         (event) => {

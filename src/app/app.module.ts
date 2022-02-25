@@ -21,7 +21,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppService } from './services/app.service';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { UserCardComponent } from './components/user-card/user-card.component';
-import { PressedDirective } from './directives/pressed.directive';
 import { ModalAlertComponent } from './components/modal-alert/modal-alert.component';
 import { LoaderComponent } from './components/loader/loader.component';
 
@@ -31,7 +30,6 @@ import { LoaderComponent } from './components/loader/loader.component';
     LoginComponent,
     UsersListComponent,
     UserCardComponent,
-    PressedDirective,
     ModalAlertComponent,
     LoaderComponent,
   ],

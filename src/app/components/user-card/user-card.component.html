@@ -23,9 +23,6 @@
       placeholder="Отчество"
       formControlName="mname"
     />
-    <!-- <small class="error" *ngIf="isControlInvalid('mname')">
-      Введите отчество
-    </small> -->
     <input
       type="text"
       name="fname"
@@ -33,10 +30,7 @@
       placeholder="Фамилия"
       formControlName="fname"
     />
-    <!-- <small class="error" *ngIf="isControlInvalid('fname')">
-      Введите фамилию
-    </small> -->
-    <div class="select">
+       <div class="select">
       <mat-form-field appearance="outline">
         <mat-select disableRipple formControlName="status" matNativeControl>
           <mat-option value="0">Подписка активна</mat-option>
@@ -47,7 +41,12 @@
     </div>
   </form>
   <div class="btn-container">
-    <button mat-flat-button class="btn-submit" (click)="onSubmit()">
+    <button
+      mat-flat-button
+      class="btn-submit"
+      [mat-dialog-close]="true"
+      (click)="onSubmit()"
+    >
       Сохранить
     </button>
   </div>

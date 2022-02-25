@@ -1,15 +1,10 @@
 @import url(https://fonts.googleapis.com/css?family=Lato:300);
 
-
 .container {
   display: flex;
-  // z-index: 1000;
-  // position: fixed;
-  // position: absolute;
   height: 100%;
   width: 100%;
   margin: 0 auto;
-  //
   text-align: center;
   background-color: #fff;
   overflow: hidden;
@@ -25,11 +20,8 @@
   width: 100%;
   float: left;
   position: relative;
-  /*margin:0 -4px -5px -2px;*/
   transition: all .2s ease;
 }
-
-
 
 .box p {
   color: #fff;
@@ -56,7 +48,6 @@
   transition: all .2s ease;
   z-index: 2;
 }
-
 
 
 /* MEDIA QUERIES */
@@ -96,16 +87,13 @@
   position: relative;
   width: 12px;
   height: 12px;
-
   top: 46%;
   top: -webkit-calc(50% - 6px);
   top: calc(50% - 6px);
   left: 46%;
   left: -webkit-calc(50% - 6px);
   left: calc(50% - 6px);
-
   border-radius: 12px;
-  // background-color: #ffffff;
   background-color: #6979F8;
   -webkit-transform-origin: 50% 50%;
   transform-origin: 50% 50%;

@@ -1,12 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Router, Routes } from '@angular/router';
+import { Router } from '@angular/router';
 import { BehaviorSubject, catchError } from 'rxjs';
-import { environment } from 'src/environments/environment';
 import { LoginRequest } from '../models/login-request';
-import { LoginResponse } from '../models/login-response';
 import { UserDialog } from '../models/user-dialog';
 import { NotificationService } from './notification.service';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -24,9 +23,7 @@ export class AppService {
     false as boolean
   );
 
-  isLogin$: BehaviorSubject<LoginResponse> = new BehaviorSubject(
-    {} as LoginResponse
-  );
+  isLogin$: BehaviorSubject<any> = new BehaviorSubject('');
 
   public getAuthentificated(): boolean {
     return this.isAuthentificated$.value;
@@ -38,14 +35,9 @@ export class AppService {
 
   login(login: LoginRequest) {
     this.http
-      .post<LoginRequest>(
-        environment.API_URL_LOGIN,
-        {
-          login: 'test@example.com',
-          password: '1q2w3e',
-        },
-        { observe: 'response' }
-      )
+      .post<LoginRequest>(environment.API_URL_LOGIN, login, {
+        observe: 'response',
+      })
       .pipe(
         catchError((err) => {
           this.notification.openAlertBar(err.error.message);
@@ -55,6 +47,8 @@ export class AppService {
         })
       )
       .subscribe((data) => {
+        const authToken = data.headers.get('Authorization');
+        this.isLogin$.next(authToken);
         this.setAuthentificated(true);
         this.router.navigate(['/userslist']);
       });
@@ -73,6 +67,6 @@ export class AppService {
     const url = environment.API_URL_ALL_USERS + id;
     return this.http
       .patch(url, userForm)
-      .subscribe((data) => console.log(data));
+      .subscribe(() => console.log(`user id: ${id} is patched`));
   }
 }

@@ -1,26 +1,3 @@
-<!-- <form class="form-container" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-  <mat-form-field appearance="outline">
-    <input matInput placeholder="Login" formControlName="login" />
-  </mat-form-field>
-  <!-- <mat-form-field appearance="outline">
-    <input
-      matInput
-      placeholder="Password"
-      [type]="hide ? 'password' : 'text'"
-      formControlName="password"
-    />
-    <button
-      mat-icon-button
-      matSuffix
-      (click)="hide = !hide"
-      [attr.aria-label]="'Hide password'"
-      [attr.aria-pressed]="hide"
-    >
-      <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
-    </button>
-  </mat-form-field> -->
-<!-- <button mat-flat-button class="btn-submit" color="primary">ВОЙТИ</button> -->
-<!-- =========================================================================== -->
 <form class="form-container" (ngSubmit)="onSubmit()" [formGroup]="loginForm">
   <input type="name" name="name" formControlName="login" />
   <input
