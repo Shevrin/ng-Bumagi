@@ -14,10 +14,8 @@
       <div class="text-info">
         <div class="avatar">
           <img
-            src="{{
-              'https://bumagi-frontend-test.herokuapp.com' + item.avatar
-            }}"
-            alt="{{ item.id }}"
+            [src]="'https://bumagi-frontend-test.herokuapp.com' + item.avatar"
+            [alt]="item.id"
           />
         </div>
         <div class="text-info">

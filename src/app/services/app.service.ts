@@ -34,7 +34,7 @@ export class AppService {
   }
 
   login(login: LoginRequest) {
-    this.http
+    return this.http
       .post<LoginRequest>(environment.API_URL_LOGIN, login, {
         observe: 'response',
       })

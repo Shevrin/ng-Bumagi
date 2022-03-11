@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import {
   MatSnackBarRef,
   MAT_SNACK_BAR_DATA,
@@ -9,11 +9,9 @@ import {
   templateUrl: './modal-alert.component.html',
   styleUrls: ['./modal-alert.component.scss'],
 })
-export class ModalAlertComponent implements OnInit {
+export class ModalAlertComponent {
   constructor(
     @Inject(MAT_SNACK_BAR_DATA) public data: any,
     public alertRef: MatSnackBarRef<ModalAlertComponent>
   ) {}
-
-  ngOnInit(): void {}
 }

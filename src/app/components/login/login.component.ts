@@ -11,8 +11,9 @@ import { AppService } from 'src/app/services/app.service';
 export class LoginComponent implements OnInit {
   hide = true;
   loginForm!: FormGroup;
-  userList!: Observable<any>;
-  isactive!: any;
+  isactive!: Observable<boolean>;
+  LoginSubscribe!: Observable<any>;
+
   constructor(private fb: FormBuilder, private appService: AppService) {}
 
   ngOnInit(): void {
@@ -33,7 +34,7 @@ export class LoginComponent implements OnInit {
     return result;
   }
 
-  onSubmit(): void {
+  onSubmit() {
     const controls = this.loginForm.controls;
     if (this.loginForm.invalid) {
       Object.keys(controls).forEach((controlName) =>

@@ -12,7 +12,6 @@ import { UserResponse } from 'src/app/models/user-response';
 })
 export class UsersListComponent implements OnInit {
   pressed = false;
-  // userList!: Observable<UserResponse[]>;
   userList!: UserResponse[];
   interval!: any;
   constructor(
