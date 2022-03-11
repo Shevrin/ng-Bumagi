@@ -16,7 +16,7 @@ import { NotificationService } from '../services/notification.service';
   providedIn: 'root',
 })
 export class AuthInterceptor implements HttpInterceptor {
-  token: string = '';
+  private token: string = '';
 
   constructor(
     private appService: AppService,
@@ -36,8 +36,8 @@ export class AuthInterceptor implements HttpInterceptor {
       tap(
         (event) => {
           if (event instanceof HttpResponse) {
-            console.log('Server response', event.body.message);
             if (event.body.message) {
+              console.log('Server response', event.body.message);
               this.notification.openAlertBar(event.body.message);
             }
           }

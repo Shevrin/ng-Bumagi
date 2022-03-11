@@ -8,10 +8,10 @@ import { LoaderService } from 'src/app/services/loader.service';
   styleUrls: ['./loader.component.scss'],
 })
 export class LoaderComponent implements OnInit {
-  loader$!: Observable<boolean>;
+  public loader$!: Observable<boolean>;
   constructor(public loaderService: LoaderService) {}
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.loader$ = this.loaderService.isLoading$;
   }
 }

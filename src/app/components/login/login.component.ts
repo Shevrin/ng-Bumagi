@@ -9,32 +9,27 @@ import { AppService } from 'src/app/services/app.service';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-  hide = true;
-  loginForm!: FormGroup;
-  isactive!: Observable<boolean>;
-  LoginSubscribe!: Observable<any>;
+  public hide = true;
+  public loginForm!: FormGroup;
+  // public isactive!: boolean;
+  public LoginSubscribe!: Observable<any>;
 
   constructor(private fb: FormBuilder, private appService: AppService) {}
 
-  ngOnInit(): void {
-    this.initForm();
-    this.isactive = this.appService.isAuthentificated$;
-  }
-
-  initForm(): void {
+  private initForm(): void {
     this.loginForm = this.fb.group({
       login: ['', [Validators.required]],
       password: ['', [Validators.required]],
     });
   }
 
-  isControlInvalid(controlName: string): boolean {
+  public isControlInvalid(controlName: string): boolean {
     const control = this.loginForm.controls[controlName];
     const result = control.invalid && control.touched;
     return result;
   }
 
-  onSubmit() {
+  public onSubmit() {
     const controls = this.loginForm.controls;
     if (this.loginForm.invalid) {
       Object.keys(controls).forEach((controlName) =>
@@ -44,5 +39,10 @@ export class LoginComponent implements OnInit {
     } else {
       this.appService.login(this.loginForm.value);
     }
+  }
+
+  public ngOnInit(): void {
+    this.initForm();
+    // this.isactive = this.appService.getAuthentificated();
   }
 }

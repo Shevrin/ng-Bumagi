@@ -11,7 +11,8 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class AppService {
-  errorMessage: string = '';
+  errorMessage!: string;
+  authToken!: string | null;
 
   constructor(
     private http: HttpClient,
@@ -19,11 +20,11 @@ export class AppService {
     private router: Router
   ) {}
 
-  isAuthentificated$: BehaviorSubject<boolean> = new BehaviorSubject(
+  private isAuthentificated$: BehaviorSubject<boolean> = new BehaviorSubject(
     false as boolean
   );
 
-  isLogin$: BehaviorSubject<any> = new BehaviorSubject('');
+  public isLogin$: BehaviorSubject<string> = new BehaviorSubject('');
 
   public getAuthentificated(): boolean {
     return this.isAuthentificated$.value;
@@ -33,7 +34,11 @@ export class AppService {
     this.isAuthentificated$.next(value);
   }
 
-  login(login: LoginRequest) {
+  private setIsLogin(value: string): void {
+    this.isLogin$.next(value);
+  }
+
+  public login(login: LoginRequest) {
     return this.http
       .post<LoginRequest>(environment.API_URL_LOGIN, login, {
         observe: 'response',
@@ -47,23 +52,25 @@ export class AppService {
         })
       )
       .subscribe((data) => {
-        const authToken = data.headers.get('Authorization');
-        this.isLogin$.next(authToken);
+        this.authToken = data.headers.get('Authorization');
+        if (this.authToken) {
+          this.setIsLogin(this.authToken);
+        }
         this.setAuthentificated(true);
         this.router.navigate(['/userslist']);
       });
   }
 
-  getUsers(status: number) {
+  public getUsers(status: number) {
     const url = environment.API_URL_ALL_USERS_STATUS + status;
     return this.http.get(url);
   }
 
-  getAllUsers() {
+  public getAllUsers() {
     return this.http.get(environment.API_URL_ALL_USERS);
   }
 
-  editUser(id: number, userForm: UserDialog) {
+  public editUser(id: number, userForm: UserDialog) {
     const url = environment.API_URL_ALL_USERS + id;
     return this.http
       .patch(url, userForm)

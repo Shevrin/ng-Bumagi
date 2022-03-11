@@ -13,9 +13,10 @@ export class NotificationService {
   durationInSeconds = 3;
   horizontalPosition: MatSnackBarHorizontalPosition = 'end';
   verticalPosition: MatSnackBarVerticalPosition = 'top';
+
   constructor(private _alertBar: MatSnackBar) {}
 
-  openAlertBar(message: string) {
+  public openAlertBar(message: string) {
     this._alertBar.openFromComponent(ModalAlertComponent, {
       data: {
         message: message,

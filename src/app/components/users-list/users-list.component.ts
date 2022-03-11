@@ -11,16 +11,17 @@ import { UserResponse } from 'src/app/models/user-response';
   styleUrls: ['./users-list.component.scss'],
 })
 export class UsersListComponent implements OnInit {
-  pressed = false;
-  userList!: UserResponse[];
-  interval!: any;
+  public pressed = false;
+  public userList!: UserResponse[];
+  private interval!: any;
+
   constructor(
     private appService: AppService,
     public userCard: MatDialog,
     public loaderService: LoaderService
   ) {}
 
-  getUsersList(status?: number): void {
+  public getUsersList(status?: number): void {
     this.loaderService.showLoader();
     if (status) {
       clearInterval(this.interval);
@@ -31,7 +32,7 @@ export class UsersListComponent implements OnInit {
     }
   }
 
-  getAllUsers(): void {
+  public getAllUsers(): void {
     this.appService.getAllUsers().subscribe((data) => {
       if (Array.isArray(data)) {
         this.userList = data;
@@ -42,7 +43,7 @@ export class UsersListComponent implements OnInit {
     });
   }
 
-  getUsersByStatus(status: number): void {
+  public getUsersByStatus(status: number): void {
     this.appService.getUsers(status).subscribe((data) => {
       if (Array.isArray(data)) {
         this.userList = data;
@@ -53,7 +54,7 @@ export class UsersListComponent implements OnInit {
     });
   }
 
-  openModal(id: number): void {
+  public openModal(id: number): void {
     clearInterval(this.interval);
     let userdata = this.userList.find((item: any) => item.id == id);
     const openUserConfig = new MatDialogConfig();
@@ -72,7 +73,7 @@ export class UsersListComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.getUsersList();
   }
 }

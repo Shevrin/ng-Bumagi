@@ -11,20 +11,17 @@ import { AppService } from 'src/app/services/app.service';
   styleUrls: ['./user-card.component.scss'],
 })
 export class UserCardComponent implements OnInit {
-  isOpen = false;
-  userForm!: FormGroup;
-  nameInHeader = this.userdata.fname + ' ' + this.userdata.name;
+  public isOpen = false;
+  public userForm!: FormGroup;
+  public nameInHeader = this.userdata.fname + ' ' + this.userdata.name;
+
   constructor(
     private appService: AppService,
     private fb: FormBuilder,
     @Inject(MAT_DIALOG_DATA) public userdata: UserDialog
   ) {}
 
-  ngOnInit(): void {
-    this.initForm();
-  }
-
-  initForm(): void {
+  private initForm(): void {
     this.userForm = this.fb.group({
       name: [this.userdata.name, [Validators.minLength(1)]],
       mname: [this.userdata.mname, [Validators.minLength(1)]],
@@ -33,13 +30,13 @@ export class UserCardComponent implements OnInit {
     });
   }
 
-  isControlInvalid(controlName: string): boolean {
+  public isControlInvalid(controlName: string): boolean {
     const control = this.userForm.controls[controlName];
     const result = control.invalid && control.touched;
     return result;
   }
 
-  onSubmit(): void {
+  public onSubmit(): void {
     const controls = this.userForm.controls;
     if (this.userForm.invalid) {
       Object.keys(controls).forEach((controlName) =>
@@ -49,5 +46,9 @@ export class UserCardComponent implements OnInit {
     } else {
       this.appService.editUser(this.userdata.id, this.userForm.value);
     }
+  }
+
+  public ngOnInit(): void {
+    this.initForm();
   }
 }
