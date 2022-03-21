@@ -22,7 +22,9 @@ export class AuthInterceptor implements HttpInterceptor {
     private appService: AppService,
     private notification: NotificationService
   ) {
-    this.appService.isLogin$.subscribe((data) => (this.token = data));
+    // this.appService.isLogin$.subscribe((data) => (this.token = data));
+    // инкапсуляция метода состояния авторизации
+    this.appService.getIsLogin().subscribe((data) => (this.token = data));
   }
 
   intercept(

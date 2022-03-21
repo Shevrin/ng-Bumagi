@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { BehaviorSubject, catchError } from 'rxjs';
+import { BehaviorSubject, catchError, Observable } from 'rxjs';
 import { LoginRequest } from '../models/login-request';
 import { UserDialog } from '../models/user-dialog';
 import { NotificationService } from './notification.service';
@@ -24,10 +24,14 @@ export class AppService {
     false as boolean
   );
 
-  public isLogin$: BehaviorSubject<string> = new BehaviorSubject('');
+  private isLogin$: BehaviorSubject<string> = new BehaviorSubject('');
 
   public getAuthentificated(): boolean {
     return this.isAuthentificated$.value;
+  }
+
+  public getIsLogin(): Observable<string> {
+    return this.isLogin$.asObservable();
   }
 
   private setAuthentificated(value: boolean): void {
