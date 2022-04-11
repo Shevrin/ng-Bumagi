@@ -7,3 +7,6 @@ Development server
 
 Доп. библиотеки
 Angular Material + кастом компонентов. https://github.com/angular/components 
+
+Валидный login/pass: 
+"test@example.com"/"1q2w3e"
